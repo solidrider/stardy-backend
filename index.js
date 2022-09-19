@@ -1,5 +1,6 @@
 const express = require("express");
 const app = express();
+require("dotenv").config();
 const cors = require("cors");
 const connectDB = require("./utils/database");
 const jwt = require("jsonwebtoken");
@@ -99,7 +100,7 @@ app.post("/user/login", async (req, res) => {
         const payload = {
           email: req.body.email,
         };
-        const token = jwt.sign(payload, secret_key, { expiresIn: "23h" });
+        const token = jwt.sign(payload, secret_key, { expiresIn: "7d" });
         console.log(token);
         return res.status(200).json({ message: "Success login", token: token });
       } else {

@@ -1,11 +1,9 @@
-const { default: mongoose } = require("mongoose");
-const mogoose = require("mongoose");
+const mongoose = require("mongoose");
+require("dotenv").config();
 
 const connectDB = async () => {
   try {
-    await mongoose.connect(
-      "mongodb+srv://onishi:moninuGAsuki1@cluster0.oasgny5.mongodb.net/appDataBase?retryWrites=true&w=majority"
-    );
+    await mongoose.connect(process.env.MONGO_DB);
     console.log("Success: Connected to MongoDB");
   } catch (err) {
     console.log("Failure:Unconnected to MongoDB");
